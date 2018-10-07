@@ -4,7 +4,9 @@ User.create!(name: "Admin",
   email: "admin@gmail.com",
   password: "admin000",
   password_confirmation: "admin000",
-  admin: true)
+  admin: true,
+  activated: true,
+  activated_at: Time.zone.now)
 
 puts "Faker is generating data ... Please wait..."
 
@@ -15,7 +17,9 @@ password = "12345678"
 User.create!(name: name,
   email: email,
   password: password,
-  password_confirmation: password)
+  password_confirmation: password,
+  activated: true,
+  activated_at: Time.zone.now)
 end
 
 puts "Create #{User.count} users!"
