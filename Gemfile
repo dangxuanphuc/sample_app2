@@ -4,9 +4,12 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 ruby "2.5.1"
 
 gem "bcrypt", "3.1.12"
+gem "bootstrap-kaminari-views"
 gem "bootstrap-sass", "3.3.7"
 gem "config"
+gem "faker", "1.7.3"
 gem "jquery-rails"
+gem "kaminari"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.1"
 gem "sass-rails", "~> 5.0"
