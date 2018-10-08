@@ -23,7 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @microposts = @user.microposts.page(params[:page])
+                       .per Settings.size_page_max_length
+  end
 
   def edit; end
 
@@ -58,13 +61,6 @@ class UsersController < ApplicationController
     return if @user
     flash[:danger] = "Cannot find this user"
     redirect_to root_url
-  end
-
-  def logged_in_user
-    return if logged_in?
-    store_location
-    flash[:danger] = "Please log in"
-    redirect_to login_path
   end
 
   def correct_user

@@ -5,3 +5,5 @@ size_max_length: 80
 gravatar_size: 50
 size_page_max_length: 5
 hours_max: 2
+micropost_max_length: 140
+picture_size: 5
