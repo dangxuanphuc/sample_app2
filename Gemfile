@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
-ruby "2.5.1"
+ruby "2.5.3"
 
 gem "bcrypt", "3.1.12"
 gem "bootstrap-kaminari-views"
@@ -18,7 +18,6 @@ gem "mini_magick", "4.7.0"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.1"
 gem "sass-rails", "~> 5.0"
-gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
@@ -33,11 +32,12 @@ group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "sqlite3"
   gem "web-console", ">= 3.3.0"
 end
 
 group :production do
-  gem "fog", "1.42"
+  gem "fog"
   gem "pg", "0.20.0"
 end
 

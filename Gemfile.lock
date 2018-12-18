@@ -449,7 +449,7 @@ DEPENDENCIES
   config
   faker (= 1.7.3)
   figaro
-  fog (= 1.42)
+  fog
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
@@ -469,7 +469,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.6
+   1.17.3
