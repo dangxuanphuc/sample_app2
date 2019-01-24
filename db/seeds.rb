@@ -10,7 +10,7 @@ User.create!(name: "Admin",
 
 puts "Faker is generating data ... Please wait..."
 
-29.times do |n|
+19.times do |n|
 name = Faker::Name.name
 email = "example-#{n+1}@gmail.com"
 password = "12345678"
@@ -25,9 +25,16 @@ end
 puts "Create #{User.count} users!"
 
 users = User.order(:created_at).take(6)
-20.times do
+10.times do
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
 puts "Create #{Micropost.count} microposts!"
+
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
