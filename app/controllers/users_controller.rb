@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i(index edit update destroy)
-  before_action :find_user, except: %i(new create index)
+  before_action :find_user, except: %i(new create index following followers)
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
 
@@ -24,8 +24,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @create_relationship = current_user.active_relationships.build
+    @destroy_relationship = current_user.active_relationships.find_by followed_id: @user.id
     @microposts = @user.microposts.page(params[:page])
-                       .per Settings.size_page_max_length
+      .per Settings.size_page_max_length
+    redirect_to(root_url) && return unless @user.activated == true
   end
 
   def edit; end
