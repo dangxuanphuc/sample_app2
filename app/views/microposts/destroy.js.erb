@@ -1,0 +1,6 @@
+$('#micropost-<%= @micropost.id %>').remove();
+$('.microposts').html("<%= j render 'shared/feed' %>");
+$('#count_micropost').html('<%= pluralize(current_user.microposts.count, "micropost") %>');
+$('#notice').show();
+$('#notice').html("<div class='alert alert-success'>Micropost deleted!</div>")
+$('#notice').fadeOut(5000);
