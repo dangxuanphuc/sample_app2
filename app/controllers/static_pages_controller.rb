@@ -4,6 +4,9 @@ class StaticPagesController < ApplicationController
       @micropost  = current_user.microposts.build
       @feed_items = current_user.feed.desc.page(params[:page])
         .per Settings.size_page_max_length
+      if @feed_items.blank?
+        redirect_to root_path
+      end
     end
   end
 

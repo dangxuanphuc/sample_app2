@@ -7,7 +7,7 @@ class FollowersController < ApplicationController
   def index
     @title = "Followers"
     @users = @user.followers.page(params[:page])
-                  .per Settings.size_page_max_length
+      .per Settings.size_page_max_length
     render "users/show_follow"
   end
 

@@ -1,6 +1,6 @@
 <% if @feed_items.any? %>
   <ol class="microposts">
     <%= render @feed_items %>
+    <%= paginate @feed_items, params: {controller: "static_pages", action: "home", id: nil, micropost: nil} %>
   </ol>
-  <%= paginate @feed_items, theme: "twitter-bootstrap-3" %>
 <% end %>

@@ -14,12 +14,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-    if @user.save
-      @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
-    else
-      render :new
+    respond_to do |format|
+      if @user.save
+        @user.send_activation_email
+        format.html {
+          redirect_to root_path
+          flash[:info] = "Please check your email to activate your account."        
+        }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -34,21 +38,27 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @user.update_attributes user_params
-      flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render :edit
+    respond_to do |format|
+      if @user.update_attributes user_params
+        format.html {
+          flash[:success] = "Profile updated"
+          redirect_to @user
+        }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
   def destroy
-    if @user.destroy
-      flash[:success] = "User deleted"
-    else
-      flash[:danger] = "Deleted failed"
+    @user.destroy
+    respond_to do |format|
+      format.js
+      # {
+      #   redirect_back fallback_location: users_path
+      #   flash[:success] = "User was delete successfully!"
+      # }
     end
-    redirect_to users_path
   end
 
   private
