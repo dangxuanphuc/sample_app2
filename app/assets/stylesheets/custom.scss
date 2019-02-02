@@ -1,6 +1,8 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'color';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -75,35 +77,10 @@ p {
   @include box_sizing;
 }
 
-aside {
-  section.user_info {
-    margin-top: 20px;
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
-}
-
 .gravatar {
-  float: left;
-  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .gravatar_edit {
@@ -111,7 +88,7 @@ aside {
 }
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 1px solid $gray-light;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
@@ -167,33 +144,105 @@ input {
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid $gray-light1;
   }
   .user {
     margin-top: 5em;
     padding-top: 0;
+    a {
+      text-decoration: none;
+    }
   }
   .content {
     display: block;
-    margin-left: 60px;
+    margin: 5px 0;
     img {
       display: block;
       padding: 5px 0;
     }
   }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
+  .fa-comment {
+    margin: 3px 3px 0 30px;
     float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+  }
+  .show-comment {
+    display: none;
+  }
+  .count-comment {
+    color: #337ab7;
+    cursor: pointer;
+    &:hover {
+      color: #23527c;
+      text-decoration: underline;
+    }
+  }
+}
+
+.clearfix {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.micropost-content {
+  margin: 5px 0;
+  display: block;
+  img {
+    display: block;
+    padding: 5px 0;
+  }
+}
+
+#micropost_picture {
+  margin-bottom: 5px;
+}
+
+.micropost-title {
+  font-size: 24px;
+}
+
+.timestamp {
+  font-style: italic;
+  display: block;
+  font-size: 12px;
+  color: $gray-light;
+  a {
+    color: $gray-light;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.view-profile {
+  display: block;
+  font-size: 13px;
+}
+
+.profile {
+  text-align: center;
+  .avatar {
+    margin-bottom: 5px;
+    img {
+      border-radius: 50%;
+      width: 150px;height: 150px;
+    }
+  }
+}
+
+.gravatar-user {
+  float: left;
+  margin-right: 5px;
+  .username {
+    font-size: 20px;
   }
 }
 
 aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+
   textarea {
     height: 100px;
     margin-bottom: 5px;
@@ -207,15 +256,40 @@ span.picture {
   }
 }
 
+span.user {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.comments {
+  margin-top: 10px;
+  #comment {
+    margin: 5px 0;
+  }
+  .current-comment {
+    margin-left: 35px;
+    border-top: 1px solid $gray-light1;
+    &:first-child {
+      border: none;
+    }
+  }
+}
+
+.like-btn {
+  margin-bottom: 5px;
+  .like img {
+    width: 16px;
+  }
+}
+
 .stats {
   overflow: auto;
-  margin-top: 0;
+  margin: 5px 0;
   padding: 0;
   a {
-    float: left;
     padding: 0 10px;
     border-left: 1px solid $gray-lighter;
-    color: gray;
+    color: $gray-dark;
     &:first-child {
       padding-left: 0;
       border: 0;
@@ -224,20 +298,6 @@ span.picture {
       text-decoration: none;
       color: blue;
     }
-  }
-  strong {
-    display: block;
-  }
-}
-
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-  a {
-    padding: 0;
   }
 }
 
@@ -248,6 +308,18 @@ span.picture {
 .notice_error {
   color: red;
   margin: -10px 0 6px 0;
+}
+
+.username {
+  font-size: 20px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.text-area {
+  resize: vertical;
+  margin-bottom: 5px;
 }
 
 footer {

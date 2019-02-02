@@ -1,0 +1,7 @@
+$('#comments-<%= @micropost.id %>').html("<%= j render @micropost.comments, micropost: @micropost %>");
+$('#show-comment-<%= @micropost.id %> .comment_form').html("<%= j render 'comments/comment_form', micropost: @micropost, comment: @micropost.comments.build %>");
+$('#count-comment-<%= @micropost.id %>').html("<%= pluralize(@micropost.comments.count, 'Comment') %>");
+
+$('#notice').show();
+$('#notice').html("<div class='alert alert-success'>Comment was create successfully!</div>")
+$('#notice').fadeOut(5000);

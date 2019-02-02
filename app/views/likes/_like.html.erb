@@ -1,0 +1,43 @@
+<% pre_like = micropost.likes.find { |like| like.user_id == current_user.id} %>
+
+<% if pre_like %>
+  <%= link_to image_tag("liked.svg"), micropost_like_path(micropost, pre_like), class: "like", method: :delete, remote: true %>
+<% else %>
+  <%= link_to image_tag("like.svg"), micropost_likes_path(micropost), class: "like", method: :post, remote: true %>
+<% end %>
+
+<span class="counter" id="micropost-counter-<%= micropost.id %>">
+  <%= link_to pluralize(micropost.likes.count, "Like"), "#likeModal", data: { toggle: "modal" } %>
+
+  <div class="modal fade" id="likeModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Likes</h4>
+        </div>
+        <div class="modal-body">
+          <% if micropost.likes.count == 0 %>
+            NIL
+          <% else %>
+            <% micropost.likes.each do |like| %>
+              <%= link_to like.user.name, like.user %><br>
+
+              <% unless like.user.current_user? current_user %>
+                <div id="follow_form">
+                  <% if !current_user.following? like.user %>
+                    <%= render "users/follow", create_relationship: @create_relationship %>
+                  <% end %>
+                </div>
+              <% end %>
+
+            <% end %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</span>

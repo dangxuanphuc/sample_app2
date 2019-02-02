@@ -1,6 +1,7 @@
 class MicropostsController < ApplicationController
-  before_action :logged_in_user, only: %i(create destroy)
+  before_action :logged_in_user
   before_action :correct_user, only: :destroy
+  before_action :find_micropost, only: %i(show edit update destroy)
 
   def create
     @micropost = current_user.microposts.build micropost_params
@@ -8,6 +9,24 @@ class MicropostsController < ApplicationController
     respond_to do |format|      
       format.js do
         @micropost.save if @micropost.valid?
+      end
+    end
+  end
+
+  def show
+  end
+
+  def edit
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @micropost.update_attributes micropost_params
+        load_feed_items
+        format.js
       end
     end
   end
@@ -25,10 +44,22 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def show_user_like
+    @users = ???
+  end
+
   private
 
   def micropost_params
     params.require(:micropost).permit :content, :picture
+  end
+
+  def find_micropost
+    @micropost = Micropost.find_by id: params[:id]
+
+    return if @micropost
+    flash[:danger] = "Micropost not found!"
+    redirect_to root_path
   end
 
   def correct_user
