@@ -1,7 +1,15 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
-  before_action :find_micropost, only: %i(new create edit update destroy)
+  before_action :find_micropost, only: %i(index new create edit update destroy)
   before_action :find_comment, only: %i(edit update destroy)
+
+  def index
+    @comments = @micropost.comments.offset(params[:offset].to_i).limit(2)    
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def create
     @comment = @micropost.comments.build comment_params

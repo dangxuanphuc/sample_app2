@@ -11,6 +11,20 @@
   </span>
 
   <div id="show-comment-<%= micropost.id %>" class="show-comment">
-    <%= render "comments/comment_content", micropost: micropost %>
+    <div class="comments">
+      <div class="comment_form">
+        <%= render "comments/comment_form", micropost: micropost, comment: micropost.comments.build %>
+      </div>
+
+      <div class="comment_content" id="comments-<%= micropost.id %>">
+        <%= render micropost.comments.limit(2).offset(params[:offset].to_i), micropost: micropost %>
+      </div>
+    </div>
+
+    <% if micropost.comments.count > 2 %>
+      <%= link_to "#", id: "loadMoreComment",data: {micropost_id: micropost.id, offset: 2} do %>
+        Load more...
+      <% end %>
+    <% end %>
   </div>
 </li>

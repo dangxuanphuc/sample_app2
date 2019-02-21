@@ -20,18 +20,6 @@
           <% if micropost.likes.count == 0 %>
             NIL
           <% else %>
-            <% micropost.likes.each do |like| %>
-              <%= link_to like.user.name, like.user %><br>
-
-              <% unless like.user.current_user? current_user %>
-                <div id="follow_form">
-                  <% if !current_user.following? like.user %>
-                    <%= render "users/follow", create_relationship: @create_relationship %>
-                  <% end %>
-                </div>
-              <% end %>
-
-            <% end %>
           <% end %>
         </div>
         <div class="modal-footer">

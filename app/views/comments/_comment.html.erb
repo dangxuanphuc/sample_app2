@@ -1,5 +1,5 @@
 <% if comment.user_id.present? %>
-  <div id="comment-<%= comment.id %>" class="current-comment">
+  <div id="comment-<%= comment.id %>" class="current-comment" data-id="<%= comment.id %>">
     <div id="comment">
       <div class="comment-user">
         <div class="gravatar-user">
