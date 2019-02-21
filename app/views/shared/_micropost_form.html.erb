@@ -1,17 +1,21 @@
 <%= form_for micropost, remote: true do |f| %>
   <div class="field">
-    <%= f.text_area :content, id: "micropost-area", placeholder: "Compose new micropost..." %>
+    <%= f.text_area :content, class: "form-control text-area", placeholder: "Compose new micropost..." %>
+
     <% if micropost.errors.present? && micropost.errors[:content].present? %>
       <span style="color: red">* Content <%= micropost.errors[:content].first %></span>
     <% end %>
   </div>
+
   <span class="picture">
     <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
+
     <% if micropost.errors.present? && micropost.errors[:picture].present? %>
       <span class="notice_error">* <%= micropost.errors[:picture].first %></span>
     <% end %>
   </span>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+
+  <%= f.submit "Post", class: "form-control btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">

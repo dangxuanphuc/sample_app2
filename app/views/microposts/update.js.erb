@@ -1,0 +1,5 @@
+$('#micropost_<%= @micropost.id %>').html("<%= j render 'microposts/micropost_content', micropost: @micropost %>");
+$('#micropost-id-<%= @micropost.id %>').hide();
+$('#notice').show();
+$('#notice').html("<div class='alert alert-success'>Micropost was update successfully!</div>")
+$('#notice').fadeOut(5000);

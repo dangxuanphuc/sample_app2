@@ -1,0 +1,6 @@
+$('#comment-<%= @comment.id %>').remove();
+$('.comment_content').html("<%= j render @micropost.comments, micropost: @micropost, comment: @comment %>");
+$('.count_comment').html("Comments (<%= current_user.comments.count %>):");
+$('#notice').show();
+$('#notice').html("<div class='alert alert-success'>Comment was delete successfully!</div>")
+$('#notice').fadeOut(5000);

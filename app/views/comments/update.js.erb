@@ -1,0 +1,5 @@
+$('.comment_content').html("<%= j render @micropost.comments, micropost: @micropost, comment: @comment %>");
+$('.comment_form').html("<%= j render 'comments/comment_form', micropost: @micropost, comment: @micropost.comments.build %>");
+$('#notice').show();
+$('#notice').html("<div class='alert alert-success'>Comment was update successfully!</div>")
+$('#notice').fadeOut(5000);
