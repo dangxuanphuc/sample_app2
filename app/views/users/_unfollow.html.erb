@@ -1,4 +1,4 @@
-<%= form_for destroy_relationship,
-  html: {method: :delete}, remote: true do |f| %>
+<%= form_for destroy_relationship, remote: true,
+  html: {method: :delete} do |f| %>
   <%= f.submit "Unfollow", class: "btn btn-default" %>
 <% end %>

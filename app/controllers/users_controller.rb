@@ -54,10 +54,6 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.js
-      # {
-      #   redirect_back fallback_location: users_path
-      #   flash[:success] = "User was delete successfully!"
-      # }
     end
   end
 

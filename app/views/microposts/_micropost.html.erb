@@ -1,7 +1,30 @@
-<li id="micropost-<%= micropost.id %>">
+<li id="micropost-<%= micropost.id %>" class="clearfix">
   <%= render "microposts/micropost_content", micropost: micropost %>
 
-  <div id="like-btn-<%= micropost.id %>" class="like-btn">
+  <div id="like-btn-<%= micropost.id %>" class="like-btn pull-left">
     <%= render "likes/like", micropost: micropost %>
+  </div>
+
+  <i class="far fa-comment"></i>
+  <span class="count-comment" id="count-comment-<%= micropost.id %>" data-id="<%= micropost.id %>">
+    <%= pluralize(micropost.comments.count, "Comment") %>
+  </span>
+
+  <div id="show-comment-<%= micropost.id %>" class="show-comment">
+    <div class="comments">
+      <div class="comment_form">
+        <%= render "comments/comment_form", micropost: micropost, comment: micropost.comments.build %>
+      </div>
+
+      <div class="comment_content" id="comments-<%= micropost.id %>">
+        <%= render micropost.comments.limit(2).offset(params[:offset].to_i), micropost: micropost %>
+      </div>
+    </div>
+
+    <% if micropost.comments.count > 2 %>
+      <%= link_to "#", id: "loadMoreComment",data: {micropost_id: micropost.id, offset: 2} do %>
+        Load more...
+      <% end %>
+    <% end %>
   </div>
 </li>

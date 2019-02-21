@@ -5,9 +5,17 @@
   <%= link_to micropost.user.name, micropost.user %>
 
   <span class="timestamp">
-    <%= link_to "Posted " + time_ago_in_words(micropost.created_at) + " ago.", micropost %>
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
   </span>
 </span>
+
+<div class="edit-micropost pull-right">
+  <% if current_user.id == micropost.user_id %>
+    <%= link_to "Edit", edit_micropost_path(micropost), remote: true %>
+    <%= link_to "Delete", micropost, method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+  <% end %>
+  <div id="micropost-id-<%= micropost.id %>"></div>
+</div>
 
 <span class="content">
   <%= micropost.content %>

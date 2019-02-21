@@ -1,0 +1,7 @@
+<% if @comments.present? %>
+  var last_id = $('#comments-<%= @micropost.id %> .current-comment').last();
+  $('<%= j render @comments, micropost: @micropost %>').insertAfter(last_id.get(0));
+<% else %>
+  var micropost_id = "<%= raw @micropost.id %>";
+  $("a#loadMoreComment[data-micropost-id='" + micropost_id +"']").hide();
+<% end %>

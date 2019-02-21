@@ -6,7 +6,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build micropost_params
     load_feed_items
-    respond_to do |format|      
+    respond_to do |format|
       format.js do
         @micropost.save if @micropost.valid?
       end

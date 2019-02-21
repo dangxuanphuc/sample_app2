@@ -1,6 +1,8 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'color';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -159,6 +161,30 @@ input {
       padding: 5px 0;
     }
   }
+  .fa-comment {
+    margin: 3px 3px 0 30px;
+    float: left;
+  }
+  .show-comment {
+    display: none;
+  }
+  #loadMoreComment{
+    margin-left: 35px;
+  }
+  .count-comment {
+    color: #337ab7;
+    cursor: pointer;
+    &:hover {
+      color: #23527c;
+      text-decoration: underline;
+    }
+  }
+}
+
+.clearfix {
+  display: block;
+  content: '';
+  clear: both;
 }
 
 .micropost-content {
@@ -240,13 +266,11 @@ span.user {
 
 .comments {
   margin-top: 10px;
-  .count_comment {
-    font-size: 17px;
-  }
   #comment {
     margin: 5px 0;
   }
   .current-comment {
+    margin-left: 35px;
     border-top: 1px solid $gray-light1;
     &:first-child {
       border: none;
@@ -254,8 +278,11 @@ span.user {
   }
 }
 
-.like-btn .like img {
-  width: 16px;
+.like-btn {
+  margin-bottom: 5px;
+  .like img {
+    width: 16px;
+  }
 }
 
 .stats {

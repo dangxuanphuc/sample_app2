@@ -1,7 +1,7 @@
 <% if comment.user_id.present? %>
-  <div id="comment-<%= comment.id %>" class="current-comment">
+  <div id="comment-<%= comment.id %>" class="current-comment" data-id="<%= comment.id %>">
     <div id="comment">
-      <div class="user">
+      <div class="comment-user">
         <div class="gravatar-user">
           <%= link_to (gravatar_for comment.user, size: 40), comment.user %>
         </div>
