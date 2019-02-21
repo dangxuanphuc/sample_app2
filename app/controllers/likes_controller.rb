@@ -1,6 +1,15 @@
 class LikesController < ApplicationController
   before_action :find_micropost
-  before_action :find_like, only: %i(destroy)
+  before_action :find_like
+
+  def index
+    @likes = @micropost.likes
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def create
     respond_to do |format|
