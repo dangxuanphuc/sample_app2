@@ -41,6 +41,7 @@ class MicropostsController < ApplicationController
         end
         format.js  
       end
+      redirect_to root_path
     end
   end
 
