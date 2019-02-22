@@ -1,0 +1,7 @@
+<% if micropost.likes.count == 0 %>
+  Be the first to like this post
+<% else %>
+  <% micropost.likes.each do |user_like| %>
+    <p><%= link_to user_like.user.name, user_like.user %></p>
+  <% end %>
+<% end %>

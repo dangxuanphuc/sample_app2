@@ -13,9 +13,6 @@ class MicropostsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
     respond_to do |format|
       format.js
@@ -28,6 +25,15 @@ class MicropostsController < ApplicationController
         load_feed_items
         format.js
       end
+    end
+  end
+
+  def show
+    @user_likes = @micropost.likes
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

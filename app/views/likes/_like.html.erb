@@ -7,25 +7,9 @@
 <% end %>
 
 <span class="counter" id="micropost-counter-<%= micropost.id %>">
-  <%= link_to pluralize(micropost.likes.count, "Like"), "#likeModal", data: { toggle: "modal" } %>
+  <%= link_to pluralize(micropost.likes.count, "Like"), "#likeModal", data: { micropost_id: micropost.id }, id: "show-user-like" %>
 
-  <div class="modal fade" id="likeModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Likes</h4>
-        </div>
-        <div class="modal-body">
-          <% if micropost.likes.count == 0 %>
-            NIL
-          <% else %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
+  <div class="like-modal">
+    <%= render "likes/like_modal", micropost: micropost %>
   </div>
 </span>

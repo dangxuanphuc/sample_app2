@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i(new create edit update)
   resources :microposts do
     resources :comments
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: [:index, :create, :destroy]
   end
   resources :relationships, only: %i(create destroy)
 end
