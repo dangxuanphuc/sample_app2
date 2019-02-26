@@ -60,6 +60,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
+    bullet (5.9.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (10.0.2)
     carrierwave (1.2.2)
       activemodel (>= 4.0.0)
@@ -473,6 +476,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.5)
     unicode-display_width (1.4.1)
+    uniform_notifier (1.12.1)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -492,6 +496,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-kaminari-views
   bootstrap-sass (= 3.3.7)
+  bullet
   byebug
   carrierwave (= 1.2.2)
   coffee-rails (~> 4.2)

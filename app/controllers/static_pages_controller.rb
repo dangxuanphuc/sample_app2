@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
     if logged_in?
-      @micropost  = current_user.microposts.build
-      @feed_items = current_user.feed.desc.page(params[:page])
-        .per Settings.size_page_max_length
+      @micropost = current_user.microposts.build
+      @feed_items = current_user.feed.includes(:user, :likes).desc
+        .page(params[:page]).per Settings.size_page_max_length
       if @feed_items.blank?
         redirect_to root_path
       end

@@ -17,7 +17,7 @@
       </div>
 
       <div class="comment_content" id="comments-<%= micropost.id %>">
-        <%= render micropost.comments.limit(2).offset(params[:offset].to_i), micropost: micropost %>
+        <%= render micropost.comments.includes(:user).limit(2).offset(params[:offset].to_i), micropost: micropost %>
       </div>
     </div>
 

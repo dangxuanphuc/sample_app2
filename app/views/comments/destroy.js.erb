@@ -1,6 +1,6 @@
 $('#comment-<%= @comment.id %>').remove();
 $('#comments-<%= @micropost.id %>').html("<%= j render @micropost.comments, micropost: @micropost, comment: @comment %>");
-$('#count-comment-<%= @micropost.id %>').html("<%= pluralize(@micropost.comments.count, 'Comment') %>");
+$('#count-comment-<%= @micropost.id %>').html("<%= pluralize(@micropost.comments.size, 'Comment') %>");
 
 $('#notice').show();
 $('#notice').html("<div class='alert alert-success'>Comment was delete successfully!</div>")
