@@ -18,10 +18,7 @@ class SessionsController < ApplicationController
           }
         end
       else
-        format.html {
-          render :new
-          flash.now[:danger] = "Invalid email/password combination"
-        }
+        format.js
       end
     end
   end
