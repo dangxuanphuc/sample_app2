@@ -70,7 +70,7 @@ class MicropostsController < ApplicationController
   end
 
   def load_feed_items
-    @feed_items = current_user.feed.desc.page(params[:page])
+    @feed_items = current_user.feed.includes(:comments).desc.page(params[:page])
       .per Settings.size_page_max_length
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_141623) do
+ActiveRecord::Schema.define(version: 2019_02_28_103816) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_02_26_141623) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.integer "comments_count", default: 0
+    t.integer "likes_count", default: 0
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
@@ -64,14 +66,16 @@ ActiveRecord::Schema.define(version: 2019_02_26_141623) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
-    t.integer "sign_in_count"
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "failed_attempts"
+    t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.integer "followers_count", default: 0
+    t.integer "followings_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end

@@ -1,4 +1,4 @@
-<% if micropost.likes.size == 0 %>
+<% if micropost.likes_count == 0 %>
   Be the first to like this post
 <% else %>
   <% micropost.likes.includes(:user).each do |user_like| %>

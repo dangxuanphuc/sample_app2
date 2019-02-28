@@ -7,7 +7,7 @@
 <% end %>
 
 <span class="counter" id="micropost-counter-<%= micropost.id %>">
-  <%= link_to pluralize(micropost.likes.size, "Like"), "#likeModal", data: { micropost_id: micropost.id }, id: "show-user-like" %>
+  <%= link_to pluralize(micropost.likes_count, "Like"), "#likeModal", data: { micropost_id: micropost.id }, id: "show-user-like" %>
 
   <div class="like-modal">
     <%= render "likes/like_modal", micropost: micropost %>

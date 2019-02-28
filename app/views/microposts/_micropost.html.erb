@@ -7,7 +7,7 @@
 
   <i class="far fa-comment"></i>
   <span class="count-comment" id="count-comment-<%= micropost.id %>" data-id="<%= micropost.id %>">
-    <%= pluralize(micropost.comments.count, "Comment") %>
+    <%= pluralize(micropost.comments_count, "Comment") %>
   </span>
 
   <div id="show-comment-<%= micropost.id %>" class="show-comment">
@@ -17,11 +17,11 @@
       </div>
 
       <div class="comment_content" id="comments-<%= micropost.id %>">
-        <%= render micropost.comments.includes(:user).limit(2).offset(params[:offset].to_i), micropost: micropost %>
+        <%= render micropost.comments.take(2), micropost: micropost %>
       </div>
     </div>
 
-    <% if micropost.comments.count > 2 %>
+    <% if micropost.comments_count > 2 %>
       <%= link_to "#", id: "loadMoreComment",data: {micropost_id: micropost.id, offset: 2} do %>
         Load more...
       <% end %>
