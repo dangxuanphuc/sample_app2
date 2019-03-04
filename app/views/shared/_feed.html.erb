@@ -1,6 +1,6 @@
 <% if @feed_items.any? %>
   <ol class="microposts">
-    <%= render @feed_items %>
+    <%= render partial: "microposts/micropost", collection: @feed_items, cached: true %>
     <%= paginate @feed_items, params: {controller: "static_pages", action: "home", id: nil, micropost: nil} %>
   </ol>
 <% end %>

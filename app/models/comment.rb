@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :micropost
+  belongs_to :micropost, counter_cache: true
 
   validates :content, presence: true
 
