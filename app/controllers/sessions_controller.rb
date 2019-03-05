@@ -10,12 +10,7 @@ class SessionsController < ApplicationController
           remember_user
           format.html { redirect_back_or @user }
         else
-          message = "Account not activated. Check your email for the
-            activation link."
-          format.html {
-            flash[:warning] = message
-            redirect_to root_url
-          }
+          format.js
         end
       else
         format.js

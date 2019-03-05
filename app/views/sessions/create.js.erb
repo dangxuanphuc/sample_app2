@@ -1,3 +1,11 @@
 $('#notice').show();
-$('#notice').html("<div class='alert alert-danger'>Invalid email/password combination</div>")
+
+<% if @user&.authenticate(params[:session][:password]) %>
+  <% if !@user.activated? %>
+    $('#notice').html("<div class='alert alert-info'>Account not activated. Check your email for the activation link.</div>");
+  <% end %>
+<% else %>
+  $('#notice').html("<div class='alert alert-danger'>Invalid email/password combination</div>");
+<% end %>
+
 $('#notice').fadeOut(5000);

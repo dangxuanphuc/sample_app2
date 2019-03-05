@@ -17,10 +17,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         @user.send_activation_email
-        format.html {
-          redirect_to root_path
-          flash[:info] = "Please check your email to activate your account."        
-        }
+        format.js
       else
         format.html { render :new }
       end
