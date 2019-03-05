@@ -20,6 +20,14 @@ Rails.application.configure do
 
   config.active_storage.service = :local
 
+  # config.active_job.queue_adapter = :sidekiq
+
+  # config.active_job.queue_name_prefix = "sample_app2"
+
+  # config.active_job.queue_name_delimiter = "_"
+
+  # config.action_mailer.perform_deliveries = true
+
   config.action_mailer.raise_delivery_errors = true
 
   host = "localhost:3000"
