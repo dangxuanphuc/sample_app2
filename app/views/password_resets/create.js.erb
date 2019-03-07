@@ -1,0 +1,9 @@
+$('#notice').show();
+
+<% if @user.present? %>
+  $('#notice').html("<div class='alert alert-success'>Email sent with password reset instructions</div>");
+<% else %>
+  $('#notice').html("<div class='alert alert-danger'>Email address not found</div>");
+<% end %>
+
+$('#notice').fadeOut(5000);
