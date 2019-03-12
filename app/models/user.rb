@@ -52,7 +52,8 @@ class User < ApplicationRecord
   end
 
   def send_activation_email
-    email = {user_name: self.name, activation_token: self.activation_token, mail: self.email}
+    email = {user_name: self.name, activation_token: self.activation_token,
+      mail: self.email}
     UserMailer.account_activation(email).deliver_later
   end
 
@@ -63,7 +64,8 @@ class User < ApplicationRecord
   end
 
   def send_password_reset_email
-    UserMailer.password_reset(self).U
+    pass_reset = {reset_token: self.reset_token, mail: self.email}
+    UserMailer.password_reset(pass_reset).deliver_later
   end
 
   def password_reset_expired?

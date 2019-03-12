@@ -20,6 +20,8 @@ Rails.application.configure do
 
   config.active_storage.service = :local
 
+  config.active_job.queue_adapter = :delayed_job
+
   config.action_mailer.raise_delivery_errors = true
 
   host = "localhost:3000"
