@@ -3,7 +3,7 @@
 <% else %>
   $('.microposts').html("<%= j render 'shared/feed' %>");
   $('.micropost_form').html("<%= j render 'shared/micropost_form', micropost: Micropost.new %>");
-  $('#count_micropost').html("<%= pluralize(current_user.microposts.size, 'micropost') %>");
+                                                  
   $('#notice').show();
   $('#notice').html("<div class='alert alert-success'>Micropost created!</div>")
   $('#notice').fadeOut(5000);

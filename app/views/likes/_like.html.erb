@@ -1,9 +1,9 @@
 <% pre_like = micropost.likes.find { |like| like.user_id == current_user.id} %>
 
 <% if pre_like %>
-  <%= link_to image_tag("liked.svg"), micropost_like_path(micropost, pre_like), class: "like", method: :delete, remote: true %>
+  <%= link_to image_tag("liked.svg"), "javascript:void(0)", class: "like like_#{pre_like.id}", id: "dislike_micropost_#{micropost.id}" %>
 <% else %>
-  <%= link_to image_tag("like.svg"), micropost_likes_path(micropost), class: "like", method: :post, remote: true %>
+  <%= link_to image_tag("like.svg"), "javascript:void(0)", class: "like", id: "like_micropost_#{micropost.id}" %>
 <% end %>
 
 <span class="counter" id="micropost-counter-<%= micropost.id %>">

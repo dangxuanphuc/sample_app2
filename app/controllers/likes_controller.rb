@@ -7,7 +7,7 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      format.json
     end
   end
 
@@ -22,7 +22,7 @@ class LikesController < ApplicationController
         @like = @micropost.likes.build user_id: current_user.id
 
         if @like.save
-          format.js
+          format.json
         end
       end
     end
@@ -37,7 +37,7 @@ class LikesController < ApplicationController
         }
       else
         if @like.destroy
-          format.js
+          format.json
         end
       end
     end

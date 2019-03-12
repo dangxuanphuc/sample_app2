@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     respond_to do |format|
-      format.js do
+      format.json do
         @comment.save if @comment.valid?
       end
     end
