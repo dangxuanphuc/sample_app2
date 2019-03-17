@@ -1,13 +1,13 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: :destroy
-  before_action :find_micropost, only: %i(show edit update destroy)
+  before_action :find_micropost, only: %i(edit update destroy)
 
   def create
     @micropost = current_user.microposts.build micropost_params
     load_feed_items
     respond_to do |format|
-      format.js do
+      format.json do
         @micropost.save if @micropost.valid?
       end
     end
@@ -28,15 +28,6 @@ class MicropostsController < ApplicationController
     end
   end
 
-  def show
-    @user_likes = @micropost.likes
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
   def destroy
     respond_to do |format|
       if @micropost.destroy
@@ -45,7 +36,7 @@ class MicropostsController < ApplicationController
           params[:page] = (params[:page].to_i - 1).to_s
           load_feed_items
         end
-        format.js  
+        format.json
       end
     end
   end
@@ -70,7 +61,7 @@ class MicropostsController < ApplicationController
   end
 
   def load_feed_items
-    @feed_items = current_user.feed.includes(:comments).desc.page(params[:page])
+    @feed_items = current_user.feed.includes(:user, :likes, comments: :user).desc.page(params[:page])
       .per Settings.size_page_max_length
   end
 end

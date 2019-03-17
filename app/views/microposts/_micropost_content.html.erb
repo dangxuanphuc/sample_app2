@@ -12,7 +12,7 @@
 <div class="edit-micropost pull-right">
   <% if current_user.id == micropost.user_id %>
     <%= link_to "Edit", edit_micropost_path(micropost), remote: true %>
-    <%= link_to "Delete", micropost, method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+    <%= link_to "Delete", micropost, id: "del_micropost_#{micropost.id}" %>
   <% end %>
   <div id="micropost-id-<%= micropost.id %>"></div>
 </div>
