@@ -17,7 +17,7 @@
       </div>
 
       <div class="comment_content" id="comments-<%= micropost.id %>">
-        <%= render micropost.comments.take(2), micropost: micropost %>
+        <%= render micropost.comments.includes(:user) .take(2), micropost: micropost %>
       </div>
     </div>
 

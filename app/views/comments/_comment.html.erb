@@ -18,11 +18,11 @@
       </div>
 
       <% if comment.user == current_user %>
-        <%= link_to "Edit", edit_micropost_comment_path(micropost, comment), remote: true %>
-        <%= link_to "Delete", micropost_comment_path(micropost, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+        <%= link_to "Edit", "#", id: "edit-comment-#{comment.id}", class: "edit-comment-micropost-#{micropost.id}" %> |
+        <%= link_to " Delete", "#", id: "destroy-comment-#{comment.id}", class: "comment-micropost-#{micropost.id}" %>
       <% end %>
 
-      <div id="comment-id-<%= comment.id %>"></div>
+      <div id="comment-id-<%= comment.id %>" class="edit-comment"></div>
     </div>
   </div>
 <% end %>

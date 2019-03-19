@@ -16,6 +16,7 @@
     <div class="container">
       <div id="notice" style="display: none"></div>
       <%= yield %>
+      <%= render "layouts/modal", micropost: @micropost %>
       <%= render "layouts/footer" %>
       <%= debug(params) if Rails.env.development? %>
     </div>

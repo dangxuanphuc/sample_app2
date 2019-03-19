@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: %i(edit update destroy)
 
   def index
-    @comments = @micropost.comments.offset(params[:offset].to_i).limit(2)    
+    @comments = @micropost.comments.offset(params[:offset].to_i).limit(2)
     respond_to do |format|
       format.html
       format.js
@@ -23,15 +23,12 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update
     respond_to do |format|
       if @comment.update_attributes comment_params
-        format.js
+        format.json
       end
     end
   end
@@ -39,7 +36,7 @@ class CommentsController < ApplicationController
   def destroy
     respond_to do |format|
       if @comment.destroy
-        format.js
+        format.json
       end
     end
   end
