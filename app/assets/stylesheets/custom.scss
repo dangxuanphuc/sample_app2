@@ -375,6 +375,40 @@ div#modal_micropost {
   }
 }
 
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.text-area {
+  resize: vertical;
+  margin-top: 5px;
+}
+
+.messages-list {
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.message-sent {
+  position: relative;
+  background-color: #428bca;
+  color: white;
+  border-radius: 16px;
+  margin: 1px 20px;
+  padding: 5px 10px;
+  float: right;
+}
+
+.message-received {
+  background-color: #D9EDF7;
+  border-radius: 16px;
+  margin: 1px 20px;
+  padding: 5px 10px;
+  float: left;
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name:  Relationship.name,
     foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :messages, dependent: :destroy
+  has_many :conversations, foreign_key: :sender_id, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 

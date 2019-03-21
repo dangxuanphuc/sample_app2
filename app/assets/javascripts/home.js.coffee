@@ -177,7 +177,6 @@ $(document).on 'click', 'a[id^=destroy-comment]', (e) ->
 $(document).on 'click', 'a[id^=timestamp]', (e) ->
   e.preventDefault()
   micropost_id = $(@).attr('id').replace(/timestamp_/, '')
-  console.log(micropost_id)
   $.ajax
     dataType: 'json'
     method: 'GET'
@@ -194,3 +193,17 @@ $(window).on 'click', (e) ->
   modal = document.getElementById('id01')
   if e.target == modal
     modal.style.display = 'none'
+
+# close conversation
+# $(document).on 'click', 'a[id^=conversation]', (e) ->
+#   e.preventDefault()
+#   conversation_id = $(@).attr('id').replace(/conversation-/, '')
+#   conversation = $('#conversations-list').find("[data-conversation-id='#{conversation_id}']").parent()
+#   $.ajax
+#     dataType: 'json'
+#     method: 'POST'
+#     url: "/conversations/#{conversation_id}/close"
+#     data:
+#       conversation_id: conversation_id
+#     success: ->
+#       conversation.remove()
