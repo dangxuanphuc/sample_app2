@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: :destroy
-  before_action :find_micropost, only: %i(edit update destroy)
+  before_action :find_micropost, only: %i(show edit update destroy)
 
   def create
     @micropost = current_user.microposts.build micropost_params
@@ -11,6 +11,9 @@ class MicropostsController < ApplicationController
         @micropost.save if @micropost.valid?
       end
     end
+  end
+
+  def show
   end
 
   def edit
@@ -61,7 +64,7 @@ class MicropostsController < ApplicationController
   end
 
   def load_feed_items
-    @feed_items = current_user.feed.includes(:user, :likes, comments: :user).desc.page(params[:page])
+    @feed_items = current_user.feed.includes(:user, :likes).desc.page(params[:page])
       .per Settings.size_page_max_length
   end
 end

@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def show
     @create_relationship = current_user.active_relationships.build
     @destroy_relationship = current_user.active_relationships.find_by followed_id: @user.id
-    @microposts = @user.microposts.includes(:likes, comments: :user).desc
+    @microposts = @user.microposts.includes(:likes).desc
       .page(params[:page]).per Settings.size_page_max_length
     redirect_to(root_url) && return unless @user.activated == true
   end
