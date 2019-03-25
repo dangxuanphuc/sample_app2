@@ -6,19 +6,34 @@ inherit_from:
   - .rubocop_enabled.yml
   - .rubocop_disabled.yml
 
+#AllCops:
+#  # Include gemspec and Rakefile
+#  Include:
+#    - '**/*.gemspec'
+#  Exclude:
+#    - 'vendor/**/*'
+#    - 'config/unicorn.rb'
+#    - 'bin/*'
+#    - 'db/**/*'
+#    - 'spec/**/*'
+#    - 'script/rails'
+#    - 'config/**/*'
+
 # Common configuration.
 AllCops:
-  # Include gemspec and Rakefile
-  Include:
-    - '**/*.gemspec'
+  TargetRubyVersion: 2.5.1
   Exclude:
-    - 'vendor/**/*'
-    - 'config/unicorn.rb'
-    - 'bin/*'
-    - 'db/**/*'
-    - 'spec/**/*'
-    - 'script/rails'
-    - 'config/**/*'
+    - db/schema.rb
+    - db/migrate/*
+    - bin/*
+    - vendor/**/*
+    - db/**/*
+    - spec/**/*
+    - config/**/*
+    - test/**/*
+    - Gemfile
+    - Rakefile
+    - config.ru
 
 # Indent private/protected/public as deep as method definitions
 Layout/AccessModifierIndentation:
@@ -116,7 +131,7 @@ Metrics/BlockNesting:
 Metrics/AbcSize:
   # The ABC size is a calculated magnitude, so this number can be a Fixnum or
   # a Float.
-  Max: 20
+  Max: 35
 
 Style/BracesAroundHashParameters:
   EnforcedStyle: no_braces
@@ -323,6 +338,9 @@ Metrics/ParameterLists:
   Max: 5
   CountKeywordArgs: true
 
+Metrics/PerceivedComplexity:
+  Max: 10
+
 # Allow safe assignment in conditions.
 Style/ParenthesesAroundCondition:
   AllowSafeAssignment: true
@@ -384,7 +402,7 @@ Style/SingleLineMethods:
   AllowIfMethodIsEmpty: true
 
 Style/StringLiterals:
-  EnforcedStyle: double_quotes
+  EnforcedStyle: single_quotes
   SupportedStyles:
     - single_quotes
     - double_quotes
@@ -396,18 +414,25 @@ Layout/SpaceAroundEqualsInParameterDefault:
     - no_space
 
 Layout/SpaceBeforeBlockBraces:
-  EnforcedStyle: no_space
+  EnforcedStyle: space
   SupportedStyles:
+    - space
+    - no_space
+  EnforcedStyleForEmptyBraces: space
+  SupportedStylesForEmptyBraces:
     - space
     - no_space
 
 Layout/SpaceInsideBlockBraces:
-  EnforcedStyle: no_space
+  EnforcedStyle: space
   SupportedStyles:
     - space
     - no_space
   # Valid values are: space, no_space
   EnforcedStyleForEmptyBraces: no_space
+  SupportedStylesForEmptyBraces:
+    - space
+    - no_space
   # Space between { and |. Overrides EnforcedStyle if there is a conflict.
   SpaceBeforeBlockParameters: false
 
