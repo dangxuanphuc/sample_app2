@@ -56,6 +56,12 @@ Layout/AlignArray:
                  one line.
   Enabled: false
 
+Layout/MultilineMethodCallIndentation:
+  Description: >-
+                 Checks indentation of method calls with the dot operator
+                 that span more than one line.
+  Enabled: false
+
 Style/UnneededPercentQ:
   Description: "Checks for %q/%Q when single quotes or double quotes would do."
   Enabled: false
@@ -69,4 +75,3 @@ Naming/AccessorMethodName:
 Lint/AssignmentInCondition:
   Description: "Don't use assignment in conditions."
   Enabled: false
-

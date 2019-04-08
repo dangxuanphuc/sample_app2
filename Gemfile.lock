@@ -47,7 +47,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.4.9)
+    autoprefixer-rails (9.5.0)
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -56,9 +56,9 @@ GEM
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
-    bootstrap-sass (3.3.7)
+    bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+      sassc (>= 2.0.0)
     builder (3.2.3)
     bullet (5.9.0)
       activesupport (>= 3.0.0)
@@ -522,7 +522,7 @@ DEPENDENCIES
   bcrypt (= 3.1.12)
   bootsnap (>= 1.1.0)
   bootstrap-kaminari-views
-  bootstrap-sass (= 3.3.7)
+  bootstrap-sass (= 3.4.1)
   bullet
   byebug
   carrierwave (= 1.2.2)

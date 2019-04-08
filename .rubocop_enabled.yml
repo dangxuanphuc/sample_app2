@@ -52,6 +52,12 @@ Metrics/BlockNesting:
   Description: "Avoid excessive block nesting"
   Enabled: true
 
+Metrics/PerceivedComplexity:
+  Description: >-
+                A complexity metric geared towards measuring complexity for a
+                human reader.
+  Enabled: true
+
 Style/BlockDelimiters:
   Description: >-
                 Avoid using {...} for multi-line blocks (multiline chaining is
@@ -417,12 +423,6 @@ Style/SingleLineMethods:
   Description: "Avoid single-line methods."
   Enabled: true
 
-Layout/SpaceBeforeFirstArg:
-  Description: >-
-                 Checks that exactly one space is used between a method name
-                 and the first argument for method calls without parentheses.
-  Enabled: true
-
 Layout/SpaceAfterColon:
   Description: "Use spaces after colons."
   Enabled: true
@@ -487,10 +487,6 @@ Layout/SpaceAroundOperators:
   Description: "Use spaces around operators."
   Enabled: true
 
-Layout/SpaceAroundKeyword:
-  Description: "Put a space before the modifier keyword."
-  Enabled: true
-
 Layout/SpaceInsideHashLiteralBraces:
   Description: "Use spaces inside hash literal braces - or don't."
   Enabled: true
@@ -501,10 +497,6 @@ Layout/SpaceInsideParens:
 
 Style/SpecialGlobalVars:
   Description: "Avoid Perl-style global variables."
-  Enabled: true
-
-Style/StringLiterals:
-  Description: "Checks if uses of quotes match the configured preference."
   Enabled: true
 
 Layout/Tab:

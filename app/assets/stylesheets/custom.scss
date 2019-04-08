@@ -172,10 +172,10 @@ input {
     margin-left: 35px;
   }
   .count-comment {
-    color: #337ab7;
+    color: $blue-light;
     cursor: pointer;
     &:hover {
-      color: #23527c;
+      color: $blue-dark;
       text-decoration: underline;
     }
   }
@@ -339,9 +339,9 @@ span.user {
 }
 
 .modal_html_content {
-  background-color: #fefefe;
+  background-color: $white-fe;
   margin: 5% auto 15% auto;
-  border: 1px solid #888;
+  border: 1px solid $gray-888;
   width: 80%;
 }
 
@@ -373,6 +373,40 @@ div#modal_micropost {
     margin: 3px 3px 0 30px;
     float: left;
   }
+}
+
+ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.messages-list {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.message-sent {
+  position: relative;
+  background-color: $blue-dark2;
+  color: white;
+  margin: 1px 20px;
+  padding: 3px 10px;
+  border-radius: 30px;
+  float: right;
+}
+
+.message-received {
+  background-color: $gray-f1;
+  margin: 1px 20px;
+  padding: 3px 10px;
+  border-radius: 30px;
+  float: left;
+}
+
+.text-area {
+  resize: vertical;
+  margin: 10px 0 0 0;
 }
 
 footer {

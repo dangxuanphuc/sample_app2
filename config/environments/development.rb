@@ -20,7 +20,7 @@ Rails.application.configure do
 
   config.active_storage.service = :local
 
-  config.active_job.queue_adapter = :delayed_job
+  config.active_job.queue_adapter = :sidekiq
 
   config.action_mailer.raise_delivery_errors = true
 

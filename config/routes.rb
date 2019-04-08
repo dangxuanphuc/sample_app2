@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  get "/chatroom", to: 'messages#index'
 
   resources :users do
     member do
@@ -22,4 +23,11 @@ Rails.application.routes.draw do
     resources :likes, only: [:index, :create, :destroy]
   end
   resources :relationships, only: %i(create destroy)
+  resources :conversations, only: %i(create) do
+    resources :messages, only: %i(create)
+
+    member do
+      post :close
+    end
+  end
 end
